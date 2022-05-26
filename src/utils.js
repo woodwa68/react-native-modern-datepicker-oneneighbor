@@ -164,9 +164,9 @@ class utils {
     return validDate;
   };
 
-  getMonthDays = (time, disabledDays) => {
+  getMonthDays = (time, _disabledDays) => {
     console.log(1)
-    console.log(disabledDays)
+    console.log(_disabledDays)
     const {minimumDate, maximumDate, isGregorian, disabledDays } = this.data;
     let date = this.getDate(time);
     const currentMonthDays = isGregorian
