@@ -58,13 +58,15 @@ const gregorianConfigs = {
 
 class utils {
   constructor({minimumDate, maximumDate, isGregorian, mode, reverse,  disabledDays, configs}) {
+    console.log(configs);
+    console.log(disabledDays)
     this.data = {
       minimumDate,
       maximumDate,
       isGregorian,
       reverse: reverse === 'unset' ? !isGregorian : reverse,
-      disabledDays
     };
+    this.disabledDays = [...disabledDays];
     this.config = isGregorian ? gregorianConfigs : jalaaliConfigs;
     this.config = {...this.config, ...configs};
     if (mode === 'time' || mode === 'datepicker') {
@@ -111,7 +113,7 @@ class utils {
   };
 
   checkMonthDisabled = (time) => {
-    const {minimumDate, maximumDate, isGregorian , disabledDays} = this.data;
+    const {minimumDate, maximumDate, isGregorian } = this.data;
     const date = this.getDate(time);
     let disabled = false;
     if (minimumDate) {
@@ -163,7 +165,7 @@ class utils {
   };
 
   getMonthDays = (time) => {
-    const {minimumDate, maximumDate, isGregorian,disabledDays } = this.data;
+    const {minimumDate, maximumDate, isGregorian } = this.data;
     let date = this.getDate(time);
     const currentMonthDays = isGregorian
       ? date.daysInMonth()
@@ -184,7 +186,7 @@ class utils {
         if(date.day()===0 || date.day()===6){
           disabled = true;
         }
-        if(disabledDays.includes(date.format('YYYY-MM-DD'))){
+        if(this.disabledDays.includes(date.format('YYYY-MM-DD'))){
           disabled = true;
         }
 
