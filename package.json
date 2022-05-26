@@ -1,6 +1,6 @@
 {
   "name": "react-native-modern-datepicker-oneneighbor",
-  "version": "2.0",
+  "version": "1.2.0",
   "description": "A customizable calendar, time & month picker for React Native (including Persian Jalaali calendar & locale)",
   "main": "src/index.js",
   "scripts": {
