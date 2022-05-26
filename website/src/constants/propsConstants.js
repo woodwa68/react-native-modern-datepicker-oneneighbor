@@ -109,4 +109,10 @@ export const PROPS_CONST = [
     default: '{}',
     description: 'Changes date picker container style.',
   },
+  {
+    name:'disabledDays',
+    type:'Array',
+    default:'[]',
+    description:'Array of disabled dates'
+  }
 ];

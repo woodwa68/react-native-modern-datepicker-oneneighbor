@@ -143,6 +143,7 @@ DatePicker.defaultProps = {
   mode: 'datepicker',
   minuteInterval: 5,
   style: {},
+  disabledDays: [],
 };
 
 DatePicker.propTypes = {
@@ -164,6 +165,7 @@ DatePicker.propTypes = {
   mode: PropTypes.oneOf(modeArray),
   minuteInterval: PropTypes.oneOf(minuteIntervalArray),
   style: PropTypes.oneOfType([PropTypes.object, PropTypes.array]),
+  disabledDays: PropTypes.array
 };
 
 export {DatePicker, CalendarContext, useCalendar};
