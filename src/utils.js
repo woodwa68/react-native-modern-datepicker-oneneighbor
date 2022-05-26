@@ -205,7 +205,7 @@ class utils {
         if(date.day()===0 || date.day()===6){
           disabled = true;
         }
-        if(HOLIDAYS.includes(this.getDate(time).format('YYYY-MM-DD'))){
+        if(HOLIDAYS.includes(this.getDate(thisDay).format('YYYY-MM-DD'))){
           disabled = true;
         }
 
