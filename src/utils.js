@@ -118,12 +118,7 @@ class utils {
       const lastDayInMonth = isGregorian ? date.date(29) : date.jDate(29);
       disabled = lastDayInMonth < this.getDate(minimumDate);
     }
-    if(date.day()===0 || date.day()===6){
-      disabled = true;
-    }
-    if(disabledDays.includes(this.getDate(time).format('YYYY-MM-DD'))){
-      disabled = true;
-    }
+    
     if (maximumDate && !disabled) {
       const firstDayInMonth = isGregorian ? date.date(1) : date.jDate(1);
       disabled = firstDayInMonth > this.getDate(maximumDate);
@@ -168,7 +163,7 @@ class utils {
   };
 
   getMonthDays = (time) => {
-    const {minimumDate, maximumDate, isGregorian} = this.data;
+    const {minimumDate, maximumDate, isGregorian,disabledDays } = this.data;
     let date = this.getDate(time);
     const currentMonthDays = isGregorian
       ? date.daysInMonth()
@@ -185,6 +180,12 @@ class utils {
         }
         if (maximumDate && !disabled) {
           disabled = thisDay > this.getDate(maximumDate);
+        }
+        if(date.day()===0 || date.day()===6){
+          disabled = true;
+        }
+        if(disabledDays.includes(this.getDate(time).format())){
+          disabled = true;
         }
 
         date = this.getDate(time);
