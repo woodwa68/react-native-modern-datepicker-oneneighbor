@@ -58,8 +58,6 @@ const gregorianConfigs = {
 
 class utils {
   constructor({minimumDate, maximumDate, isGregorian, mode, reverse,  disabledDays, configs}) {
-    console.log(configs);
-    console.log(disabledDays)
     this.data = {
       minimumDate,
       maximumDate,
@@ -188,7 +186,7 @@ class utils {
         if(date.day()===0 || date.day()===6){
           disabled = true;
         }
-        if(disabledDays.includes(date.format('YYYY-MM-DD'))){
+        if(this.config && this.config['HOLIDAYS'] && this.config['HOLIDAYS'].includes(date.format('YYYY-MM-DD'))){
           disabled = true;
         }
 
