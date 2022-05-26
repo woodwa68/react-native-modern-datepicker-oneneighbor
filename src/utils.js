@@ -56,35 +56,14 @@ const gregorianConfigs = {
   timeClose: 'Close',
 };
 
-const HOLIDAYS = [
-  '2022-05-30', // Memorial Day
-  '2022-07-04', // 4th of July
-  '2022-09-05', // Labor Day
-  '2022-11-24', // Thanksgiving
-  '2022-11-25', // Thanksgiving (day after)
-  '2022-12-25', // Christmas
-  '2022-12-26', // Christmas (day after)
-  '2023-01-01', // New Years Day
-  '2023-01-02', // New Years Day (in lieu)
-  '2023-04-07', // Good Friday
-  '2023-04-09', // Easter
-  '2023-05-29', // Memorial Day
-  '2023-07-04', // 4th of July
-  '2023-09-04', // Labor Day
-  '2023-11-24', // Thanksgiving
-  '2023-11-25', // Thanksgiving (day after)
-  '2023-12-25', // Christmas
-  '2023-12-26' // Christmas (day after)]
-];
-
-
 class utils {
-  constructor({minimumDate, maximumDate, isGregorian, mode, reverse, configs}) {
+  constructor({minimumDate, maximumDate, isGregorian, mode, reverse,  disabledDays, configs}) {
     this.data = {
       minimumDate,
       maximumDate,
       isGregorian,
-      reverse: reverse === 'unset' ? !isGregorian : reverse
+      reverse: reverse === 'unset' ? !isGregorian : reverse,
+      disabledDays
     };
     this.config = isGregorian ? gregorianConfigs : jalaaliConfigs;
     this.config = {...this.config, ...configs};
@@ -184,7 +163,7 @@ class utils {
   };
 
   getMonthDays = (time) => {
-    const {minimumDate, maximumDate, isGregorian } = this.data;
+    const {minimumDate, maximumDate, isGregorian,disabledDays } = this.data;
     let date = this.getDate(time);
     const currentMonthDays = isGregorian
       ? date.daysInMonth()
@@ -205,8 +184,7 @@ class utils {
         if(date.day()===0 || date.day()===6){
           disabled = true;
         }
-        console.log(date.format('YYYY-MM-DD'))
-        if(HOLIDAYS.includes(date.format('YYYY-MM-DD'))){
+        if(disabledDays.includes(date.format('YYYY-MM-DD'))){
           disabled = true;
         }
 
