@@ -184,7 +184,7 @@ class utils {
         if(date.day()===0 || date.day()===6){
           disabled = true;
         }
-        if(disabledDays.includes(this.getDate(time).format())){
+        if(disabledDays.includes(this.getDate(time).format('YYYY-MM-DD'))){
           disabled = true;
         }
 
