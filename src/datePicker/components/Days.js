@@ -4,11 +4,11 @@ import {View, Text, StyleSheet, TouchableOpacity} from 'react-native';
 import {useCalendar} from '../DatePicker';
 
 const Days = () => {
-  const {options, state, utils, onDateChange} = useCalendar();
+  const {options, state, utils, onDateChange, disabledDays} = useCalendar();
   const [mainState, setMainState] = state;
   const [itemSize, setItemSize] = useState(0);
   const style = styles(options);
-  const days = useMemo(() => utils.getMonthDays(mainState.activeDate));
+  const days = useMemo(() => utils.getMonthDays(mainState.activeDate, disabledDays));
 
   const onSelectDay = date => {
     setMainState({
