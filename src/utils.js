@@ -163,8 +163,6 @@ class utils {
   };
 
   getMonthDays = (time, _disabledDays) => {
-    console.log(1)
-    console.log(_disabledDays)
     const {minimumDate, maximumDate, isGregorian, disabledDays } = this.data;
     let date = this.getDate(time);
     const currentMonthDays = isGregorian
